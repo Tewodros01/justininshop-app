@@ -1,18 +1,18 @@
-import React from 'react';
-import { SidebarTrigger } from '../ui/sidebar';
-import { Separator } from '../ui/separator';
-import { Breadcrumbs } from '../breadcrumbs';
-import SearchInput from '../search-input';
-import { UserNav } from './user-nav';
-import ThemeToggle from './ThemeToggle/theme-toggle';
-import { RefreshCcw, Bell } from 'lucide-react';
+import React from "react";
+import { SidebarTrigger } from "../ui/sidebar";
+import { Separator } from "../ui/separator";
+import { Breadcrumbs } from "../breadcrumbs";
+import SearchInput from "../search-input";
+import { UserNav } from "./user-nav";
+import ThemeToggle from "./ThemeToggle/theme-toggle";
+import { RefreshCcw, Bell } from "lucide-react";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
+} from "@/components/ui/select";
 
 export default function Header() {
   return (
@@ -51,6 +51,7 @@ export default function Header() {
         </button>
         <UserNav />
         <Bell className="size-5" />
+        <ThemeToggle />
       </div>
     </header>
   );

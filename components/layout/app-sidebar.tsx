@@ -1,5 +1,5 @@
-'use client';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+"use client";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Sidebar,
   SidebarContent,
@@ -11,7 +11,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from '@/components/ui/sidebar';
+} from "@/components/ui/sidebar";
 import {
   LogOut,
   Package,
@@ -22,10 +22,10 @@ import {
   Users,
   Settings,
   Book,
-} from 'lucide-react';
-import { signOut } from 'next-auth/react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+} from "lucide-react";
+import { signOut } from "next-auth/react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function AppSidebar() {
   const pathname = usePathname();
@@ -44,7 +44,7 @@ export default function AppSidebar() {
           <SidebarGroupLabel>GESTIONE NEGOZIO</SidebarGroupLabel>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild isActive={pathname === '/ordini'}>
+              <SidebarMenuButton asChild isActive={pathname === "/ordini"}>
                 <Link href="/ordini">
                   <ShoppingBag />
                   <span>Ordini</span>
@@ -54,7 +54,7 @@ export default function AppSidebar() {
             <SidebarMenuItem>
               <SidebarMenuButton
                 asChild
-                isActive={pathname === '/prenotazioni'}
+                isActive={pathname === "/prenotazioni"}
               >
                 <Link href="/prenotazioni">
                   <Calendar />
@@ -65,7 +65,7 @@ export default function AppSidebar() {
             <SidebarMenuItem>
               <SidebarMenuButton
                 asChild
-                isActive={pathname === '/inventario'}
+                isActive={pathname === "/inventario"}
                 className="bg-orange-500 text-white rounded-lg"
               >
                 <Link href="/inventario">
@@ -75,7 +75,7 @@ export default function AppSidebar() {
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild isActive={pathname === '/coupon'}>
+              <SidebarMenuButton asChild isActive={pathname === "/coupon"}>
                 <Link href="/coupon">
                   <Ticket />
                   <span>Coupon</span>
@@ -90,7 +90,7 @@ export default function AppSidebar() {
             <SidebarMenuItem>
               <SidebarMenuButton
                 asChild
-                isActive={pathname === '/lista-prodotti'}
+                isActive={pathname === "/lista-prodotti"}
               >
                 <Link href="/lista-prodotti">
                   <Book />
@@ -99,7 +99,7 @@ export default function AppSidebar() {
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild isActive={pathname === '/negozi'}>
+              <SidebarMenuButton asChild isActive={pathname === "/negozi"}>
                 <Link href="/negozi">
                   <Store />
                   <span>Negozi</span>
@@ -107,7 +107,7 @@ export default function AppSidebar() {
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild isActive={pathname === '/utenti'}>
+              <SidebarMenuButton asChild isActive={pathname === "/utenti"}>
                 <Link href="/utenti">
                   <Users />
                   <span>Utenti</span>
@@ -117,7 +117,7 @@ export default function AppSidebar() {
             <SidebarMenuItem>
               <SidebarMenuButton
                 asChild
-                isActive={pathname === '/impostazioni'}
+                isActive={pathname === "/impostazioni"}
               >
                 <Link href="/impostazioni">
                   <Settings />

@@ -1,19 +1,19 @@
-import PageContainer from '@/components/layout/page-container';
-import { buttonVariants } from '@/components/ui/button';
-import { Heading } from '@/components/ui/heading';
-import { Separator } from '@/components/ui/separator';
-import { DataTableSkeleton } from '@/components/ui/table/data-table-skeleton';
-import { searchParamsCache, serialize } from '@/lib/searchparams';
-import { cn } from '@/lib/utils';
-import { Plus } from 'lucide-react';
-import Link from 'next/link';
-import { SearchParams } from 'nuqs/server';
-import { Suspense } from 'react';
-import ProductListingPage from '@/features/products/components/product-listing';
-import ProductTableAction from '@/features/products/components/product-tables/product-table-action';
+import PageContainer from "@/components/layout/page-container";
+import { buttonVariants } from "@/components/ui/button";
+import { Heading } from "@/components/ui/heading";
+import { Separator } from "@/components/ui/separator";
+import { DataTableSkeleton } from "@/components/ui/table/data-table-skeleton";
+import { searchParamsCache, serialize } from "@/lib/searchparams";
+import { cn } from "@/lib/utils";
+import { Plus } from "lucide-react";
+import Link from "next/link";
+import { SearchParams } from "nuqs/server";
+import { Suspense } from "react";
+import ProductListingPage from "@/features/products/components/product-listing";
+import ProductTableAction from "@/features/products/components/product-tables/product-table-action";
 
 export const metadata = {
-  title: 'Dashboard: Products',
+  title: "Dashboard: Products",
 };
 
 type pageProps = {
@@ -37,8 +37,8 @@ export default async function Page(props: pageProps) {
             description="Manage products (Server side table functionalities.)"
           />
           <Link
-            href="/dashboard/product/new"
-            className={cn(buttonVariants(), 'text-xs md:text-sm')}
+            href="/dashboard/store/new"
+            className={cn(buttonVariants(), "text-xs md:text-sm")}
           >
             <Plus className="mr-2 h-4 w-4" /> Add New
           </Link>
