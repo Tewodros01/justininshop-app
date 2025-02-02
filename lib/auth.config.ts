@@ -19,19 +19,19 @@ export const authConfig: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        // if (!credentials?.email || !credentials?.password) {
-        //   throw new Error("Missing email or password"); // ✅ Fixes the 401 error
-        // }
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error("Missing email or password"); // ✅ Fixes the 401 error
+        }
 
         // Simulating user lookup - replace with actual DB check
         const user = {
           id: "1",
           name: "John Doe",
-          email: "john@gmail.com",
+          email: credentials?.email,
           password: "testpassword123", // Replace with hashed password from DB
         };
 
-        if ("testpassword123" === user.password) {
+        if (credentials.password === user.password) {
           return user; // ✅ Authentication success
         }
 
@@ -40,7 +40,7 @@ export const authConfig: NextAuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/", //sigin page
+    signIn: "/login", // Set your sign-in page
   },
   callbacks: {
     async jwt({ token, user }) {
@@ -58,4 +58,10 @@ export const authConfig: NextAuthOptions = {
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: "jwt",
+  },
+  jwt: {
+    secret: process.env.NEXTAUTH_SECRET,
+  },
 };
