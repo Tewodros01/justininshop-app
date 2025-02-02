@@ -24,7 +24,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerSession(authConfig); // ✅ Correct function
+  const session = await getServerSession(authConfig);
 
   return (
     <html lang="en" className={`${lato.className}`} suppressHydrationWarning>

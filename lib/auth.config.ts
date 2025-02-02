@@ -1,42 +1,46 @@
-import { NextAuthOptions } from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import GithubProvider from "next-auth/providers/github";
+import { NextAuthOptions } from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import GithubProvider from 'next-auth/providers/github';
 
 export const authConfig: NextAuthOptions = {
   providers: [
     GithubProvider({
-      clientId: process.env.GITHUB_ID ?? "",
-      clientSecret: process.env.GITHUB_SECRET ?? "",
+      clientId: process.env.GITHUB_ID ?? '',
+      clientSecret: process.env.GITHUB_SECRET ?? '',
     }),
     CredentialsProvider({
-      name: "Credentials",
+      name: 'Credentials',
       credentials: {
-        email: { label: "Email", type: "text", placeholder: "user@example.com" },
-        password: { label: "Password", type: "password" },
+        email: {
+          label: 'Email',
+          type: 'text',
+          placeholder: 'user@example.com',
+        },
+        password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          throw new Error("Missing email or password"); // ✅ Fixes the 401 error
+          throw new Error('Missing email or password'); // ✅ Fixes the 401 error
         }
 
         // Simulating user lookup - replace with actual DB check
         const user = {
-          id: "1",
-          name: "John Doe",
-          email: credentials.email,
-          password: "testpassword123", // Replace with hashed password from DB
+          id: '1',
+          name: 'John Doe',
+          email: credentials?.email,
+          password: 'testpassword123', // Replace with hashed password from DB
         };
 
         if (credentials.password === user.password) {
           return user; // ✅ Authentication success
         }
 
-        throw new Error("Invalid email or password"); // ✅ Proper error handling
+        throw new Error('Invalid email or password'); // ✅ Proper error handling
       },
     }),
   ],
   pages: {
-    signIn: '/' //sigin page
+    signIn: '/login', // Set your sign-in page
   },
   callbacks: {
     async jwt({ token, user }) {
@@ -54,4 +58,10 @@ export const authConfig: NextAuthOptions = {
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: 'jwt',
+  },
+  jwt: {
+    secret: process.env.NEXTAUTH_SECRET,
+  },
 };
