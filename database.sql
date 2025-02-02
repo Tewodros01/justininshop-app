@@ -94,7 +94,6 @@ CREATE TABLE store_categories (
     FOREIGN KEY (parent_category_id) REFERENCES store_categories(id) ON DELETE SET NULL
 );
 
-
 -- ============================================
 -- 4️⃣ Stores Table
 -- ============================================
@@ -109,11 +108,11 @@ CREATE TABLE stores (
     cover_image VARCHAR(255),
     additional_images JSON,
     free_shipping_threshold DECIMAL(10,2),
-    store_categories JSON,
     store_hours JSON,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
 
 -- ============================================
 -- 4️⃣ Store Table
@@ -133,14 +132,14 @@ CREATE TABLE store_with_categories (
 -- 5️⃣ Inventory Management Table (Product per Store)
 -- ============================================
 CREATE TABLE store_inventory (
-    inventory_id INT PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     store_id INT NOT NULL,
     product_id INT NOT NULL,
     stock_quantity INT DEFAULT 0,
     status ENUM('available', 'out_of_stock', 'recently_added') DEFAULT 'available',
     last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (store_id) REFERENCES stores(store_id) ON DELETE CASCADE,
-    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
+    FOREIGN KEY (store_id) REFERENCES stores(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
 );
 
 -- ============================================
